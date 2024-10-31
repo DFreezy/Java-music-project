@@ -1,13 +1,16 @@
 // MusicApp.java
 import java.util.Scanner;
+/*Responsible for terminal interaction*/
 
 public class MusicApp {
     public static void main(String[] args) {
+        /*Doesn't return any value */
         Scanner scanner = new Scanner(System.in);
         User user = new User("Duwayne");
 
-        System.out.println("Welcome to the Music Management System, " + user.getUsername() + "!");
+        System.out.println("Welcome to the Music playlist, " + user.getUsername() + "!");
         
+        /*Adds a loop to execute code while the terminal is running*/
         boolean running = true;
         while (running) {
             System.out.println("\nChoose an option:");
@@ -17,8 +20,9 @@ public class MusicApp {
             System.out.println("4. Play Playlist");
             System.out.println("5. Exit");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
+            /*Adds a switch statement to handle each option the user chooses*/
             switch (choice) {
                 case 1 -> {
                     System.out.print("Enter playlist name: ");
@@ -49,6 +53,7 @@ public class MusicApp {
                     try {
                         playlist.addMedia(song);
                     } catch (DuplicateSongException e) {
+                        /*Catches any duplicates*/
                         System.out.println(e.getMessage());
                     }
                 }
